@@ -1,0 +1,458 @@
+html {
+    font-family: Poppins;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    padding-top: 60px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    height: 60px;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 1000;
+    width: 100%;
+
+    position: fixed;
+    top: 0;
+    transition: top 0.3s;
+}
+
+.link-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+
+}
+
+nav a{
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.log-in-link {
+    margin: 0 0 0 auto ;
+    text-decoration: none;
+    padding: 0;
+}
+
+.log-in {
+    background-color: yellow;
+    color: black;
+    padding: 10px 25px 10px 25px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 30px;
+    margin-left: auto;
+
+}
+
+.log-in:hover {
+    background-color: green;
+    color: white;
+}
+
+nav .logo {
+    margin-right: auto;
+    margin-left: 30px;
+}
+
+nav a:hover {
+    color: green;   
+    
+}
+
+.logo {
+    width: 80px;
+}
+
+nav svg {
+    fill: black;
+}
+#sidebar-active {
+    display: none;
+}
+.open-sidebar-button,
+.close-sidebar-button {
+    display: none;
+}
+
+.logo-side {
+    width: 50px;
+    display: none;
+    margin-right: auto;
+    margin-left: 30px;
+}
+
+nav a {
+    /* --- ADDED THESE THREE LINES --- */
+    position: relative;   /* This anchors the line to the link */
+    display: flex;        /* You already had this, keep it */
+    align-items: center;  /* You already had this, keep it */
+    
+    /* --- YOUR EXISTING STYLES --- */
+    height: 100%;
+    padding: 0 20px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* --- THE UNDERLINE EFFECT (No changes needed here) --- */
+.text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0; /* Adjusted slightly so it's not at the very bottom of the 60px nav */
+    width: 0;
+    height: 2px;
+    background-color: #80ea66;
+    transition: width 0.3s ease;
+    z-index: 5;
+}
+
+.text:hover::after {
+    width: 100%;
+}
+
+@media(max-width: 533px) {
+
+    body {
+        padding: 0 20px; /* Changed from 40px 20px to 0 20px */
+    }
+    
+    .link-container{
+        display: flex; /* FIX: allow it to exist */
+        flex-direction: column;
+        align-items: flex-start;
+
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 10;
+        width: 230px;
+        height: 100%; /* add this */
+
+        background-color: green;
+        box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+        transition: 0.75s ease-out;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav a {
+        box-sizing: border-box;
+        height: auto;
+        font-weight: 600;
+        width: 100%;
+        padding: 20px 30px;
+        justify-content: flex-start;
+    }
+    nav a:hover {
+        color: white;
+    }
+
+
+    .log-in {
+        margin: 20px 30px;
+        background-color: green;
+        border-style: none;
+        padding: 0;
+        font-size: 16px;
+    }
+
+    .log-in:hover {
+        color: white;
+    }
+
+    .logo-side {
+        display: block;
+        width: 70px;
+    }
+
+    .open-sidebar-button,
+    .close-sidebar-button {
+        padding: 20px;
+        display: block;
+    }
+
+    #sidebar-active:checked ~ .link-container {
+        right: 0;
+    }
+
+    /* FIX: use #overlay instead of .overlay */
+    #sidebar-active:checked ~ #overlay {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+        background: rgba(0,0,0,0.3); /* optional dim effect */
+    }
+}
+
+
+
+
+
+/* Minimalism & Typography Focus */
+:root {
+    --brand-green: #1b4332;
+    --brand-yellow: #facc15;
+    --text-black: #000000;
+    --text-grey: #555555;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 20px auto 0;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: 500;
+    letter-spacing: -2px;
+    margin: 0 0 10px 0;
+    line-height: 1.1;
+}
+
+.last-updated {
+    font-size: 1rem;
+    color: var(--text-grey);
+    margin-bottom: 100px;
+}
+
+/* Two-Column Layout */
+.policy-row {
+    display: flex;
+    margin-bottom: 60px;
+    border-top: 1px solid #eeeeee;
+    padding-top: 40px;
+}
+
+.left-col {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.right-col {
+    flex: 1.5;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Branded Accents */
+.highlight {
+    color: var(--brand-green);
+}
+
+.right-col p, .right-col li {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li::before {
+    content: "— "; /* Simple dash instead of bullets */
+    color: var(--brand-yellow);
+    font-weight: bold;
+}
+
+/* Responsive design for phones */
+@media (max-width: 768px) {
+    .policy-row {
+        flex-direction: column;
+    }
+    
+    .left-col {
+        margin-bottom: 20px;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    body {
+        padding: 40px 20px;
+    }
+}
+
+
+
+
+.footer-container {
+            max-width: 1200px;
+            margin: 100px auto 0;
+            color: #000;
+        }
+
+        /* Divider Lines */
+        .footer-divider {
+            border: 0;
+            border-top: 1px solid #000;
+            margin: 0;
+        }
+
+        /* Top Section */
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        /* Logo and Brand Section */
+        .logo-container {
+            margin-bottom: 15px;
+        }
+
+        .brand-logo {
+            height: 70px; /* Adjust based on your logo size */
+            width: auto;
+            display: block;
+        }
+
+        .brand-section h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .brand-section p {
+            font-size: 14px;
+            color: #437d43; /* The specific green-ish tint from your image */
+            line-height: 1.4;
+            max-width: 220px;
+            margin-bottom: 15px;
+        }
+
+        /* Social Circles */
+        .social-icons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .circle {
+            width: 28px;
+            height: 28px;
+            background-color: #d9d9d9;
+            border-radius: 50%;
+        }
+
+        /* Middle and Right Columns */
+        .footer-column h4 {
+            font-style: italic;
+            font-weight: 900;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .footer-column a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        /* Bottom Bar */
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            font-size: 14px;
+        }
+
+        .copyright {
+            font-style: italic;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .legal-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        margin: 40px 20px; /* Pulls footer up so it's visible sooner */
+    }
+
+    .footer-top {
+        flex-direction: column;
+        padding: 30px 0;
+    }
+
+    .footer-column {
+        min-width: 100%;
+        margin-bottom: 25px;
+        text-align: left; /* Keep left aligned or use 'center' if you prefer */
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+        padding-bottom: 40px; /* Extra space at the very bottom */
+    }
+
+    .legal-links {
+        flex-direction: column; /* Stack legal links for better readability */
+        gap: 10px;
+    }
+}

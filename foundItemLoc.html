@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Found Item - ASA Lost and Found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="homepage.css">
+  <link rel="stylesheet" href="foundItemLoc.css">
+</head>
+<body>
+
+<header class="home-header">
+  <div class="logo-container">
+    <a href="homepage.html" class="logo-link">
+      <img src="Final logo.png" alt="ASA Logo" class="main-logo">
+    </a>
+  </div>
+  
+  <nav class="main-nav">
+    <a href="homepage.html" class="nav-item"><i class="fa-solid fa-table-cells-large"></i> Home</a>
+    <a href="#" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i> Lost Items</a>
+    <a href="#" class="nav-item"><i class="fa-solid fa-circle-check"></i> Found Items</a>
+    <a href="post-item.html" class="nav-item active"><i class="fa-solid fa-circle-plus"></i> Post Item</a>
+  </nav>
+
+  <div class="header-right">
+    <!-- Notifications and Profile remain consistent with homepage -->
+    <div class="notif-container">
+      <div class="bell-wrapper" onclick="toggleNotif()">
+        <i class="fa-regular fa-bell bell"></i>
+        <span class="notif-badge"></span>
+      </div>
+      <div id="notifDropdown" class="notif-dropdown">
+        <!-- Notif content -->
+      </div>
+    </div>
+
+    <div class="profile-dropdown">
+      <div class="user-avatar" onclick="toggleDropdown()">
+        <i class="fa-solid fa-circle-user"></i>
+      </div>
+      <div id="myDropdown" class="dropdown-content">
+        <div class="user-info">
+            <p class="u-name">CCIS Admin</p>
+            <p class="u-role">Admin</p>
+        </div>
+        <hr>
+        <a href="accInfo.html"><i class="fa-solid fa-gear"></i> Settings</a>
+        <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+        <a href="landing.html" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="form-container">
+  <div class="form-header">
+    <a href="postItem.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
+    <h1>Report Found Item</h1>
+  </div>
+
+  <section class="report-card">
+    <form id="foundItemForm">
+      <div class="input-group full">
+        <label><i class="fa-solid fa-tags"></i> Item Title</label>
+        <input type="text" placeholder="Ex: Key with a red Keychain" required>
+      </div>
+
+      <div class="row">
+        <div class="input-group half">
+          <label><i class="fa-solid fa-box"></i> Category</label>
+          <select required>
+            <option value="" disabled selected>Select Category</option>
+            <option value="electronics">Electronics</option>
+            <option value="documents">Documents</option>
+            <option value="personal">Personal Belongings</option>
+          </select>
+        </div>
+
+        <div class="input-group half">
+          <label><i class="fa-solid fa-location-dot"></i> Location Found</label>
+          <input type="text" placeholder="Ex: Main Gate Security" required>
+        </div>
+      </div>
+
+      <div class="input-group full">
+        <label><i class="fa-solid fa-map-pin"></i> Pick Up Location</label>
+        <select id="pickupLocation" onchange="updateLocationView()" required>
+          <option value="" disabled selected>Where is the item kept now? (Ex: CCIS-LSG Office)</option>
+          <option value="CAA">CAA LSG Office</option>
+          <option value="CCIS">CCIS LSG Office</option>
+          <option value="CED">CED LSG Office</option>
+          <option value="CEGS">CEGS LSG Office</option>
+          <option value="CHASS">CHASS LSG Office</option>
+          <option value="CMNS">CMNS LSG Office</option>
+          <option value="COFES">COFES LSG Office</option>
+          <option value="Guard">Guard House</option>
+        </select>
+      </div>
+
+      <!-- NEW: Dynamic Location Edit/View Section -->
+      <div id="locationPreview" class="location-preview-box" style="display: none;">
+        <div class="preview-images">
+            <div class="img-placeholder"><i class="fa-solid fa-image"></i><br>Image 1</div>
+            <div class="img-placeholder"><i class="fa-solid fa-image"></i><br>Image 2</div>
+        </div>
+        <div class="preview-details">
+            <h4 id="displayLocName">CCIS LSG</h4>
+            <textarea id="locDescription" placeholder="Enter location description here..."></textarea>
+            <button type="button" id="adminEditBtn" class="edit-loc-btn"><i class="fa-solid fa-pen-to-square"></i> Change Images</button>
+        </div>
+      </div>
+
+      <div class="input-group full">
+        <label><i class="fa-solid fa-file-lines"></i> Detailed Description</label>
+        <textarea id="descriptionField" placeholder="Be descriptive but don't give away secret identifying marks..." rows="4" required></textarea>
+      </div>
+
+      <div class="submit-container">
+        <button type="submit" class="submit-btn">Submit Report <i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="bottom-bar"></footer>
+
+<script>
+/* DROPDOWN NAVIGATION LOGIC */
+function toggleDropdown() {
+  document.getElementById("myDropdown").classList.toggle("show");
+  document.getElementById("notifDropdown").classList.remove("show");
+}
+
+function toggleNotif() {
+  document.getElementById("notifDropdown").classList.toggle("show");
+  document.getElementById("myDropdown").classList.remove("show");
+}
+
+/* ADMIN LOGIC FOR LOCATION PREVIEW */
+const currentUserRole = "Admin"; // Use "Admin" to enable editing
+
+function updateLocationView() {
+    const select = document.getElementById('pickupLocation');
+    const preview = document.getElementById('locationPreview');
+    const locName = document.getElementById('displayLocName');
+    const locDesc = document.getElementById('locDescription');
+    const editBtn = document.getElementById('adminEditBtn');
+
+    if(select.value) {
+        preview.style.display = "flex";
+        locName.innerText = select.options[select.selectedIndex].text;
+        
+        // Admin Permissions inside the preview
+        if(currentUserRole !== "Admin") {
+            locDesc.readOnly = true;
+            editBtn.style.display = "none";
+        } else {
+            locDesc.readOnly = false;
+            editBtn.style.display = "block";
+        }
+    }
+}
+
+window.onload = () => {
+    const description = document.getElementById('descriptionField');
+    if (currentUserRole !== "Admin") {
+      description.readOnly = true;
+      description.style.backgroundColor = "#f5f5f5";
+    }
+};
+
+window.onclick = function(event) {
+  if (!event.target.closest('.profile-dropdown') && !event.target.closest('.notif-container')) {
+    document.getElementById("myDropdown").classList.remove("show");
+    document.getElementById("notifDropdown").classList.remove("show");
+  }
+}
+</script>
+</body>
+</html>

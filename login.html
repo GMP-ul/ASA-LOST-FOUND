@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAGEGRID | Log In</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <main class="login-container">
+        <div class="login-card">
+            <header class="logo">
+                <img src="final logo 1.png" alt="PAGEGRID Logo" class="logo-img">
+            </header>
+
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Please enter your details to sign in.</p>
+
+            <form>
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <div class="input-group">
+                        <select id="role" required>
+                            <option value="" disabled selected>Select your Role</option>
+                            <option value="student">Student</option>
+                            <option value="staff">Staff</option>
+                            <option value="admin">Admin</option>
+                            <option value="visitor">Visitor</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn-submit">LOG IN</button>
+            </form>
+
+            <footer class="links">
+                <p>Don't have an account? <a href="create_acc.html"><strong>Create Account</strong></a></p>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>
