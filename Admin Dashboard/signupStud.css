@@ -1,0 +1,422 @@
+/* ============================================================
+   RESET & BASE
+============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f6fa;
+  overflow: hidden;
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+header {
+  height: 85px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  position: relative;
+  z-index: 10;
+}
+
+.main-logo {
+  height: 120px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #374151;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background: #1a5c2a;
+  color: #fff;
+  border-color: #1a5c2a;
+}
+
+/* ============================================================
+   REGISTRATION SECTION
+============================================================ */
+.registration-section {
+  height: calc(100vh - 115px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 60px;
+}
+
+.registration-container {
+  width: 100%;
+  max-width: 1080px;
+}
+
+/* ============================================================
+   TWO-COLUMN LAYOUT
+============================================================ */
+.page-layout {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+/* ============================================================
+   LEFT PROMO PANEL
+============================================================ */
+.promo-panel {
+  background: linear-gradient(160deg, #1a5c2a 0%, #1e6e32 60%, #24843c 100%);
+  width: 38%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-panel::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  bottom: -80px;
+  right: -80px;
+}
+
+.promo-panel::after {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  top: -50px;
+  left: -50px;
+}
+
+.promo-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.promo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.promo-badge i {
+  color: #f5c518;
+  font-size: 13px;
+}
+
+.promo-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.promo-text {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+.promo-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.promo-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.promo-feature i {
+  color: #f5c518;
+  width: 18px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ============================================================
+   RIGHT FORM CARD
+============================================================ */
+.form-card {
+  background: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-left: none;
+}
+
+.card-accent {
+  height: 5px;
+  background: linear-gradient(90deg, #1a5c2a, #2d8a45);
+  flex-shrink: 0;
+}
+
+.form-card-inner {
+  padding: 36px 40px 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.form-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.form-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* ============================================================
+   FORM ELEMENTS
+============================================================ */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-label i {
+  color: #1a5c2a;
+  font-size: 12px;
+  width: 14px;
+  text-align: center;
+}
+
+.label-note {
+  font-weight: 400;
+  color: #9ca3af;
+  font-size: 11px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13.5px;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.form-input:focus {
+  border-color: #1a5c2a;
+  box-shadow: 0 0 0 3px rgba(26,92,42,0.08);
+}
+
+.readonly-input {
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+  cursor: default;
+}
+
+.readonly-input:focus {
+  border-color: #d1d5db;
+  box-shadow: none;
+}
+
+/* ============================================================
+   SUBMIT BUTTON
+============================================================ */
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 24px;
+  background: #1a5c2a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+.btn-submit:hover {
+  background: #154d23;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(26,92,42,0.25);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ============================================================
+   FORM FOOTER
+============================================================ */
+.form-footer {
+  font-size: 12.5px;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.login-link {
+  font-weight: 700;
+  color: #1a5c2a;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.login-link:hover {
+  color: #111827;
+  text-decoration: underline;
+}
+
+/* ============================================================
+   BOTTOM BAR
+============================================================ */
+.bottom-bar {
+  height: 30px;
+  background-color: #fff;
+  border-top: 1px solid #e5e7eb;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 900px) {
+  html, body {
+    overflow: auto;
+  }
+
+  .registration-section {
+    height: auto;
+    padding: 32px 24px 60px;
+    align-items: flex-start;
+  }
+
+  .page-layout {
+    flex-direction: column;
+  }
+
+  .promo-panel {
+    width: 100%;
+    padding: 36px 32px;
+  }
+
+  .promo-title {
+    font-size: 28px;
+  }
+
+  .form-card-inner {
+    padding: 28px 28px 24px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 0 20px;
+  }
+
+  .registration-section {
+    padding: 24px 16px 60px;
+  }
+
+  .form-card-inner {
+    padding: 24px 20px 20px;
+  }
+}

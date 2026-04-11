@@ -1,0 +1,187 @@
+:root {
+    --primary-color: #2e7d32; /* A more professional green */
+    --hover-color: #1b5e20;
+    --text-main: #333;
+    --text-muted: #666;
+    --border-color: #ddd;
+    --bg-color: #f4f7f6;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+/* Logo Styling */
+.logo-img {
+    width: 70px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: var(--text-main);
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+/* Form Layout */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1);
+}
+
+/* Button Styling */
+.btn-submit {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s active;
+}
+
+.btn-submit:hover {
+    background-color: var(--hover-color);
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+/* Links */
+.links {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.links a {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.links a strong {
+    color: var(--primary-color);
+}
+
+.links a:hover {
+    color: var(--text-main);
+    text-decoration: underline;
+}
+
+.forgot-link {
+    font-size: 13px !important;
+    opacity: 0.8;
+}
+
+select {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-sizing: border-box;
+    background-color: white;
+    color: var(--text-main);
+    cursor: pointer;
+    appearance: none; /* Removes default browser arrow */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    transition: all 0.2s ease;
+}
+
+select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1);
+    outline: none;
+}
+
+/* Style for the placeholder-like first option */
+select:invalid {
+    color: #999;
+}
+
+option {
+    color: var(--text-main);
+}
+
+/* Styling for the terms container */
+.terms-text {
+    font-size: 13px; /* Slightly smaller than main text, matching the image */
+    color: #808080; /* A muted grey, matching image */
+    line-height: 1.5; /* Good vertical spacing */
+    margin-bottom: 25px; /* Adds space above the login/forgot links */
+    text-align: center; /* Centers the whole block */
+}
+
+/* Specific styling for 'Privacy Policy' and 'Terms of Service' links */
+.policy-link {
+    color: #808080; /* Inherit the muted grey color */
+    text-decoration: underline; /* The basic underline style from image */
+    text-decoration-thickness: 1px; /* The specific thin line from image */
+    text-underline-offset: 3px; /* Pulls the line down slightly from the text */
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+/* Standard hover effect to show interactivity */
+.policy-link:hover {
+    color: #333; /* Darker grey on hover */
+    text-decoration-color: #333;
+}

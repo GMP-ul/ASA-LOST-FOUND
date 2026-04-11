@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claim Item Lists - ASA Lost and Found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="accclaim.css">
+</head>
+<body>
+
+<header>
+  <a href="dashboard.html" class="logo-link">
+    <img src="Final logo.png" alt="ASA Lost and Found Logo" class="main-logo">
+  </a>
+
+  <nav class="header-nav">
+    <a href="dashboard.html" class="nav-item">
+      <i class="fa-solid fa-table-cells-large"></i> Home
+    </a>
+    <a href="accLost.html" class="nav-item">
+      <i class="fa-solid fa-magnifying-glass"></i> Lost Items
+    </a>
+    <a href="accFound.html" class="nav-item">
+      <i class="fa-solid fa-magnifying-glass"></i> Found Items
+    </a>
+    <a href="post-item.html" class="nav-item">
+      <i class="fa-solid fa-circle-plus"></i> Post Item
+    </a>
+  </nav>
+
+  <div class="header-right">
+    <i class="fa-regular fa-bell bell"></i>
+    <div class="user-avatar">
+      <i class="fa-solid fa-circle-user"></i>
+    </div>
+  </div>
+</header>
+
+<div class="main-container">
+  <aside class="sidebar">
+    <div class="sidebar-content">
+      <h2 class="sidebar-category">Options</h2>
+      <nav class="menu">
+        <a href="dashboard.html" class="menu-item">Dashboard</a>
+        <a href="accLost.html" class="menu-item">Lost Items</a>
+        <a href="accFound.html" class="menu-item">Found Items</a>
+        <a href="accclaim.html" class="menu-item active">Pending Items</a>
+        <a href="accClaimed.html" class="menu-item">Claimed items</a>
+        <a href="accApproved.html" class="menu-item">Approved Items</a>
+        <a href="accsUsers.html" class="menu-item">Users</a>
+        <a href="accUpdates.html" class="menu-item">Recently Updated</a>
+        <a href="accLogs.html" class="menu-item">Reports / Logs</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="accInfo.html" class="menu-item">Settings</a>
+      <a href="login.html" class="logout">Log Out</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="content-header">
+      <h1 class="page-title">CLAIM ITEM LISTS</h1>
+      
+      <div class="table-actions">
+        <div class="mini-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search claims...">
+        </div>
+        <button class="list-btn"><i class="fa-solid fa-list-ul"></i></button>
+      </div>
+    </div>
+
+    <!-- UPDATED FILTER BAR -->
+    <div class="filter-bar">
+      <div class="filter-item">
+        <label>Claimant Type</label>
+        <select>
+          <option value="">All Types</option>
+          <option value="student">Student</option>
+          <option value="faculty">Faculty</option>
+          <option value="staff">Staff</option>
+          <option value="visitor">Visitor</option>
+        </select>
+      </div>
+
+      <div class="filter-item">
+        <label>Status</label>
+        <select>
+          <option value="">All Status</option>
+          <option value="pending">Approved</option>
+          <option value="pending">Pending</option>
+          <option value="claim">Claim</option>
+          <option value="rejected">Rejected</option>
+        </select>
+      </div>
+
+      <div class="filter-item">
+        <label>Date Submitted</label>
+        <input type="date">
+      </div>
+
+      <!-- CONSISTENT FILTER ACTIONS -->
+      <div class="filter-actions">
+        <button class="filter-apply">Filter</button>
+        <button class="filter-reset">Reset</button>
+      </div>
+    </div>
+
+    <div class="table-card taller-table">
+      <table class="claim-table">
+        <thead>
+          <tr>
+            <th>Proof</th>
+            <th>Claimant</th>
+            <th>Item Name</th>
+            <th>Claim Submitted</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="claim-table-body">
+          <!-- Data Rows will be injected here -->
+        </tbody>
+      </table>
+
+      <div class="empty-state">
+        <p>No claims available to display.</p>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <a href="#" class="page-nav"><i class="fa-solid fa-arrow-left"></i> Prev</a>
+      <a href="#" class="page-num active">1</a>
+      <a href="#" class="page-num">2</a>
+      <a href="#" class="page-num">3</a>
+      <span class="dots">...</span>
+      <a href="#" class="page-num">67</a>
+      <a href="#" class="page-num">68</a>
+      <a href="#" class="page-nav">Next <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

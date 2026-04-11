@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visitor Registration - ASA Lost and Found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="signupVisitor.css">
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="Final logo.png" alt="ASA Logo" class="main-logo">
+  </div>
+  <div class="header-right">
+    <a href="selection.html" class="nav-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Selection
+    </a>
+  </div>
+</header>
+
+<main class="registration-section">
+  <div class="registration-container">
+
+    <div class="page-layout">
+
+      <div class="promo-panel">
+        <div class="promo-inner">
+          <div class="promo-badge">
+            <i class="fa-solid fa-person-walking-luggage"></i>
+            <span>Visitor</span>
+          </div>
+          <h1 class="promo-title">Sign Up Now</h1>
+          <p class="promo-text">
+            Welcome to the ASA community. As a visitor, you can help return items found on campus or report belongings you may have lost. Join us in keeping our campus helpful!
+          </p>
+          <div class="promo-features">
+            <div class="promo-feature">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Report lost items easily</span>
+            </div>
+            <div class="promo-feature">
+              <i class="fa-solid fa-hand-holding-heart"></i>
+              <span>Turn in found belongings</span>
+            </div>
+            <div class="promo-feature">
+              <i class="fa-solid fa-shield-check"></i>
+              <span>Safe and secure processing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="card-accent"></div>
+
+        <div class="form-card-inner">
+          <h2 class="form-title">Registration Form</h2>
+          <p class="form-subtitle">Register as a visitor to access the system.</p>
+
+          <form class="signup-form">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="fa-solid fa-user"></i>
+                  First Name
+                </label>
+                <input class="form-input" type="text" placeholder="Enter first name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="fa-solid fa-user"></i>
+                  Last Name
+                </label>
+                <input class="form-input" type="text" placeholder="Enter last name" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fa-solid fa-envelope"></i>
+                Personal Email
+              </label>
+              <input class="form-input" type="email" placeholder="example@email.com" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="fa-solid fa-lock"></i>
+                  Password
+                </label>
+                <input class="form-input" type="password" placeholder="Create a password" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">
+                  <i class="fa-solid fa-lock"></i>
+                  Confirm Password
+                </label>
+                <input class="form-input" type="password" placeholder="Repeat password" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fa-solid fa-id-badge"></i>
+                Role
+              </label>
+              <input class="form-input readonly-input" type="text" value="Visitor" readonly>
+            </div>
+
+            <button type="button" class="btn-submit" onclick="window.location.href='/User Dashboard/index.html';">
+              Create Account
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+
+            <p class="form-footer">
+              Already have an account? <a href="index.html" class="login-link">Login</a>
+            </p>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="bottom-bar"></footer>
+
+</body>
+</html>

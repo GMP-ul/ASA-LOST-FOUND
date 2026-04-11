@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASA Lost & Found</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%231a5c2a'/><circle cx='32' cy='22' r='10' fill='%23f5c518'/><circle cx='32' cy='22' r='4' fill='white'/><rect x='30' y='31' width='4' height='16' rx='2' fill='%23f5c518'/><line x1='24' y1='42' x2='14' y2='56' stroke='%23f5c518' stroke-width='4' stroke-linecap='round'/><circle cx='30' cy='36' r='11' fill='none' stroke='%23f5c518' stroke-width='3'/></svg>" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION BAR
+============================================================ -->
+<nav>
+  <div class="nav-inner">
+
+    <!-- Logo -->
+    <a class="nav-logo" onclick="showPage('dashboard')" style="display: flex; align-items: center; padding: 0;">
+      <img src="Final logo.png" alt="ASA Logo" style="height: 120px; width: auto; object-fit: contain; display: block;">
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <div class="nav-links">
+      <a onclick="showPage('dashboard')" id="nav-dashboard" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        Dashboard
+      </a>
+      <a onclick="showPage('lost')" id="nav-lost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        Lost Items
+      </a>
+      <a onclick="showPage('found')" id="nav-found">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        Found Items
+      </a>
+      <a onclick="showPage('post')" id="nav-post">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/>
+        </svg>
+        Post Item
+      </a>
+    </div>
+
+    <!-- Right: Bell + Profile + Hamburger -->
+    <div class="nav-right">
+
+      <!-- Notification Bell -->
+      <div style="position:relative;">
+        <button class="notif-btn" onclick="toggleNotif(event)" title="Notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+          <div class="notif-badge" id="notifBadge">1</div>
+        </button>
+
+        <!-- Notification Panel -->
+        <div class="notif-panel" id="notifPanel">
+          <div class="notif-panel-header">
+            <h3>Notifications</h3>
+            <span class="notif-mark-all" onclick="markAllRead()">Mark all as read</span>
+          </div>
+          <div class="notif-list" id="notifList">
+            <div class="notif-item unread">
+              <div class="notif-icon blue">📋</div>
+              <div class="notif-content">
+                <p>Welcome to <strong>ASA Lost &amp; Found!</strong> Start by posting a lost or found item.</p>
+                <span>Just Now</span>
+              </div>
+            </div>
+          </div>
+          <div class="notif-panel-footer"><a>See all notifications</a></div>
+        </div>
+      </div>
+
+      <!-- Profile Button -->
+      <div style="position:relative;">
+        <button class="profile-btn" onclick="toggleProfile(event)">
+          <div class="profile-avatar">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <span id="navUsername">UserName</span>
+        </button>
+
+        <!-- Profile Dropdown -->
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="profile-dropdown-header">
+            <div class="pd-name" id="dropdownName">UserName</div>
+            <div class="pd-role">Student</div>
+          </div>
+          <div class="profile-dropdown-item" onclick="showPage('settings'); closeDropdowns();">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            Settings
+          </div>
+<a href="/Landing Page Plaza/index.html" 
+   class="profile-dropdown-item logout" 
+   onclick="closeDropdowns();">
+
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+    <polyline points="16 17 21 12 16 7"/>
+    <line x1="21" y1="12" x2="9" y2="12"/>
+  </svg>
+
+  Log out
+</a>
+        </div>
+      </div>
+
+      <!-- Hamburger (mobile) -->
+      <button class="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6"  x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Nav Menu -->
+  <div class="mobile-nav" id="mobileNav">
+    <a onclick="showPage('dashboard'); toggleMobileNav();" id="mnav-dashboard" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      Dashboard
+    </a>
+    <a onclick="showPage('lost'); toggleMobileNav();" id="mnav-lost">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      Lost Items
+    </a>
+    <a onclick="showPage('found'); toggleMobileNav();" id="mnav-found">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      Found Items
+    </a>
+    <a onclick="showPage('post'); toggleMobileNav();" id="mnav-post">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/>
+      </svg>
+      Post Item
+    </a>
+    <a onclick="showPage('settings'); toggleMobileNav();">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </svg>
+      Settings
+    </a>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     PAGE: DASHBOARD
+============================================================ -->
+<div class="page active" id="page-dashboard">
+  <div class="dash-header">
+    <div class="dash-welcome">
+      <h1>Welcome back, <span id="welcomeUsername">UserName</span> 👋</h1>
+      <p>Here's what's happening with your reported items.</p>
+    </div>
+    <div class="dash-actions">
+      <button class="btn-report-lost" onclick="showPage('report-lost')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+          <circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/>
+        </svg>
+        Report Lost
+      </button>
+      <button class="btn-report-found" onclick="showPage('report-found')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        Report Found
+      </button>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon yellow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ca8a04" stroke-width="2">
+          <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9"  x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+      <div><div class="stat-label">Lost Items</div><div class="stat-value">1</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </div>
+      <div><div class="stat-label">Found Items</div><div class="stat-value">1</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+      </div>
+      <div><div class="stat-label">Claimed</div><div class="stat-value">0</div></div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2>Recently Updated</h2>
+    <a onclick="showPage('lost')">Explore All →</a>
+  </div>
+  <div class="empty-state">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+      <line x1="7" y1="7" x2="7.01" y2="7"/>
+    </svg>
+    <h3>No Recent Updates</h3>
+    <p>Looks like everyone is holding onto their belongings right now. Be a hero and report an item if you find one!</p>
+  </div>
+
+  <div class="tip-card">
+    <h3>How to recover items faster?</h3>
+    <p>Adding clear photos and specific locations significantly increases the chance of finding your item. Our automated matching system will notify you as soon as a potential match is found.</p>
+    <div class="tip-tags">
+      <div class="tip-tag">Update Daily</div>
+      <div class="tip-tag">Verify Ownership</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PAGE: LOST ITEMS DIRECTORY
+============================================================ -->
+<div class="page" id="page-lost">
+  <div class="dir-header">
+    <h1>Lost Items Directory</h1>
+    <p>Browse through items reported lost across the campus. If you have found any of these items, please help by turning them in or contacting the owner.</p>
+  </div>
+  <div class="dir-controls">
+    <div class="search-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" placeholder="Search Lost Items...">
+    </div>
+    <select class="filter-select">
+      <option>All Categories</option>
+      <option>Electronics</option><option>Clothing</option>
+      <option>Accessories</option><option>Documents</option><option>Others</option>
+    </select>
+    <select class="filter-select">
+      <option>All Statuses</option><option>Active</option><option>Recovered</option>
+    </select>
+  </div>
+  <div class="items-grid" id="lostItemsGrid">
+    <div class="item-card" onclick="openItemDetails('lost', 'Mingming', 'Mingming ahahha test rani', 'March 29, 2026', 'TESTING ONLY', 'image_b70d6d.jpg')">
+      <div class="card-img-wrap">
+        <img src="image_b70d6d.jpg" alt="Mingming">
+        <span class="badge badge-lost">LOST</span>
+        <span class="badge badge-pending">PENDING</span>
+      </div>
+      <div class="card-info">
+        <h3>Mingming</h3>
+        <span class="category-tag">Other</span>
+        <p class="card-desc">Mingming ahahha test rani</p>
+        <div class="card-footer">
+          <span>📍 TESTING ONLY</span>
+          <span class="view-link">VIEW DETAILS</span>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+
+
+<!-- ============================================================
+     PAGE: FOUND ITEMS DIRECTORY
+============================================================ -->
+<div class="page" id="page-found">
+  <div class="dir-header">
+    <h1>Found Items Directory</h1>
+    <p>Items safely turned in by our community. Have you lost something recently? Check if it has been found here to reclaim your property.</p>
+  </div>
+  <div class="dir-controls">
+    <div class="search-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" placeholder="Search Found Items...">
+    </div>
+    <select class="filter-select">
+      <option>All Categories</option>
+      <option>Electronics</option><option>Clothing</option>
+      <option>Accessories</option><option>Documents</option><option>Others</option>
+    </select>
+    <select class="filter-select">
+      <option>All Statuses</option><option>Active</option><option>Claimed</option>
+    </select>
+  </div>
+  <div class="items-grid" id="foundItemsGrid">
+    <div class="item-card" onclick="openItemDetails('found', 'Book', 'Book with title chuchuchu', 'March 29, 2026', 'Hiraya Room 311', 'image_b70ccb.png')">
+      <div class="card-img-wrap">
+        <img src="image_b70ccb.png" alt="Book">
+        <span class="badge badge-found">FOUND</span>
+        <span class="badge badge-pending">PENDING</span>
+      </div>
+      <div class="card-info">
+        <h3>Book</h3>
+        <span class="category-tag">Documents</span>
+        <p class="card-desc">Book with title chuchuchu</p>
+        <div class="card-footer">
+          <span>📍 Hiraya Room 311</span>
+          <span class="view-link">VIEW DETAILS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PAGE: POST ITEM
+============================================================ -->
+<div class="page" id="page-post">
+  <div style="padding: 24px 0;">
+    <div class="post-wrap">
+      <h2>Post Item</h2>
+      <p>Lost something important or found an item that doesn't belong to you? Start by selecting whether the item is lost or found. Once selected, you'll be guided to provide the necessary details to help others identify the item and increase the chances of returning it to its rightful owner.</p>
+      <div class="post-choices">
+        <button class="choice-btn choice-lost"  onclick="showPage('report-lost')">Lost Item</button>
+        <button class="choice-btn choice-found" onclick="showPage('report-found')">Found Item</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PAGE: REPORT LOST ITEM
+============================================================ -->
+<div class="page report-form-page" id="page-report-lost">
+  <button class="form-back-btn" onclick="showPage('post')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    Report Lost Item
+  </button>
+
+  <div class="form-layout">
+
+    <!-- Left: Fields -->
+    <div class="form-card">
+      <div class="form-group">
+        <label class="form-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+            <line x1="7" y1="7" x2="7.01" y2="7"/>
+          </svg>
+          Item Title
+        </label>
+        <input class="form-input" type="text" placeholder="Ex: Blue Leather Wallet"
+               id="lostItemTitle" oninput="updatePreviewTitle('lostItemTitle','lostPreviewTitle')">
+      </div>
+      <div class="form-group">
+        <label class="form-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+          Category
+        </label>
+        <div class="form-select-wrap">
+          <select class="form-select">
+            <option value="">Select Category</option>
+            <option>Electronics</option><option>Clothing</option><option>Accessories</option>
+            <option>Documents</option><option>Books</option><option>Keys</option><option>Others</option>
+          </select>
+          <div class="select-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          Last Seen Location
+        </label>
+        <input class="form-input" type="text" placeholder="Ex: Library, Floor 2">
+      </div>
+      <div class="form-group">
+        <label class="form-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          Detailed Description
+        </label>
+        <textarea class="form-textarea" placeholder="Describe specific marks, contents, or circumstances..."></textarea>
+      </div>
+    </div>
+
+    <!-- Right: Image + Submit -->
+    <div>
+      <div class="form-card">
+        <div class="img-title-preview" id="lostPreviewTitle">Item Title</div>
+        <div class="img-upload-area">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9l4-4 4 4 4-4 4 4"/><path d="M3 15l4 4 4-4 4 4 4-4"/>
+          </svg>
+          <p><strong>Drop photos here</strong><br>or click to browse</p>
+        </div>
+      </div>
+      <button class="btn-submit" onclick="showPopup('lost')">
+        Submit Report
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PAGE: REPORT FOUND ITEM
+============================================================ -->
+<div class="page report-form-page" id="page-report-found">
+  <button class="form-back-btn" onclick="showPage('post')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    Report Found Item
+  </button>
+
+  <div class="form-card" style="max-width: 640px;">
+    <div class="form-group">
+      <label class="form-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+          <line x1="7" y1="7" x2="7.01" y2="7"/>
+        </svg>
+        Item Title
+      </label>
+      <input class="form-input" type="text" placeholder="Ex: Key with a red Keychain">
+    </div>
+
+    <div class="two-col">
+      <div class="form-group">
+        <label class="form-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+          Category
+        </label>
+        <div class="form-select-wrap">
+          <select class="form-select">
+            <option value="">Select Category</option>
+            <option>Electronics</option><option>Clothing</option><option>Accessories</option>
+            <option>Documents</option><option>Books</option><option>Keys</option><option>Others</option>
+          </select>
+          <div class="select-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Location Found
+        </label>
+        <input class="form-input" type="text" placeholder="Ex: Main Gate Security">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        Pick Up Location
+      </label>
+      <div class="pickup-dropdown-wrap">
+        <button class="pickup-trigger" id="pickupTrigger" onclick="togglePickup(event)">
+          <span id="pickupText">Where is the item kept now? (Ex: CCIS-LSG Office)</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="pickup-dropdown" id="pickupDropdown">
+          <div class="pickup-option" onclick="selectPickup(this,'CAA LSG Office')">
+            <span class="pickup-option-icon"></span> CAA LSG Office
+          </div>
+          <div class="pickup-option" onclick="selectPickup(this,'CCIS LSG Office')">
+            <span class="pickup-option-icon"></span> CCIS LSG Office
+          </div>
+          <div class="pickup-option" onclick="selectPickup(this,'CED LSG Office')">
+            <span class="pickup-option-icon"></span> CED LSG Office
+          </div>
+          <div class="pickup-option" onclick="selectPickup(this,'CEGS LSG Office')">
+            <span class="pickup-option-icon"></span> CEGS LSG Office
+          </div>
+          <div class="pickup-option" onclick="selectPickup(this,'CHASS LSG Office')">
+            <span class="pickup-option-icon"></span> CHASS LSG Office
+          </div>
+          <div class="pickup-option" onclick="selectPickup(this,'CMNS LSG Office')">
+            <span class="pickup-option-icon"></span> CMNS LSG Office
+          </div>
+          <div class="pickup-option" onclick="selectPickup(this,'COFES LSG Office')">
+            <span class="pickup-option-icon"></span> COFES LSG Office
+          </div>
+          <div class="pickup-option" onclick="selectPickup(this,'Guard House')">
+            <span class="pickup-option-icon"></span> Guard House
+          </div>
+        </div>
+      </div>
+      <!-- Location Preview -->
+      <div class="location-preview" id="locationPreview">
+        <div class="loc-prev-title" id="locPrevTitle">📍 Location Preview</div>
+        <div class="loc-images">
+          <div>
+            <div class="loc-img-wrap">
+              <div class="loc-placeholder" id="locBuildingEmoji"></div>
+            </div>
+            <div class="loc-img-label">Building</div>
+          </div>
+          <div>
+            <div class="loc-img-wrap">
+              <div class="loc-placeholder"></div>
+            </div>
+            <div class="loc-img-label">LSG Office Room</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+        </svg>
+        Detailed Description
+      </label>
+      <textarea class="form-textarea" placeholder="Be descriptive but don't give away secret identifying marks (let the owner prove it)..."></textarea>
+    </div>
+
+    <button class="btn-submit" onclick="showPopup('found')">
+      Submit Report
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PAGE: SETTINGS
+============================================================ -->
+<div class="page" id="page-settings">
+  <div class="settings-container">
+    <div class="settings-sidebar">
+      <h2 class="sidebar-title">Settings</h2>
+      <div class="sidebar-nav">
+        <button class="s-nav-btn active" onclick="switchSettingsTab('account')">Account Information</button>
+        <button class="s-nav-btn" onclick="switchSettingsTab('security')">Password & Security</button>
+      </div>
+      
+      <button class="sidebar-logout" onclick="closeDropdowns()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>
+        </svg>
+        Log out
+      </button>
+    </div>
+
+    <div class="settings-content">
+      
+      <div id="set-account" class="settings-section-tab active">
+        <h1>Account Information</h1>
+        <div class="form-card main-card">
+          <div class="profile-upload-row">
+            <div class="big-avatar">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="upload-box">
+              <p><strong>Upload a New Photo</strong><br><small>profile.jpg</small></p>
+              <button class="update-small-btn">Update</button>
+            </div>
+          </div>
+          <h2 class="user-display-name">UserName</h2>
+          
+          <div class="two-col">
+            <div class="form-group"><label>First Name* </label><input type="text" class="form-input gray" disabled value="John"></div>
+            <div class="form-group"><label>Last Name* </label><input type="text" class="form-input gray" disabled value="Doe"></div>
+          </div>
+          <div class="form-group"><label>Username </label><input type="text" class="form-input gray" disabled value="johndoe123"></div>
+          <div class="form-group"><label>Email* </label><input type="email" class="form-input gray" disabled value="student@carsu.edu.ph"></div>
+          <button class="btn-submit yellow-btn">Update Information</button>
+        </div>
+      </div>
+
+      <div id="set-security" class="settings-section-tab">
+        <h1>Password & Security</h1>
+        <div class="form-card main-card">
+          <div class="form-group"><label>Current Password </label><input type="password" class="form-input gray" placeholder="••••••••"></div>
+          <div class="form-group"><label>New Password </label><input type="password" class="form-input gray" placeholder="Enter new password"></div>
+          <div class="form-group"><label>Confirm Password </label><input type="password" class="form-input gray" placeholder="Confirm new password"></div>
+          <button class="btn-submit yellow-btn">Update Information</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     POPUP OVERLAY
+============================================================ -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopup(event)">
+  <div class="popup-box" id="popupBox">
+    <div class="popup-icon" id="popupIcon" style="border: 1.5px solid #1a5c2a; border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+      <span style="font-size: 50px; color: #1a5c2a; font-weight: 100;">✓</span>
+    </div>
+    <h3 id="popupTitle">Report Submitted!</h3>
+    <p id="popupMessage">Your report has been successfully submitted. Our community will help locate your item.</p>
+    <button class="popup-close" onclick="closePopupDirect()">Got it!</button>
+  </div>
+</div>
+
+
+<div class="modal-overlay" id="itemModal">
+  <div class="modal-container">
+    <button class="modal-close-btn" onclick="closeItemModal()">&larr; Back</button>
+    
+    <div class="modal-content-layout">
+      <div class="modal-image-sec">
+        <img id="modalImg" src="" alt="Item">
+      </div>
+
+      <div class="modal-info-sec">
+        <div class="modal-badges">
+          <span class="badge" id="modalTypeBadge"></span>
+          <span class="badge badge-pending">PENDING</span>
+        </div>
+        <h2 id="modalTitle">Item Name</h2>
+        
+        <div class="modal-meta">
+          <span><small id="modalCat">Category</small></span>
+          <span>📍 <small id="modalLoc">Location</small></span>
+          <span>&copy; <small id="modalDate">Date</small></span>
+        </div>
+
+        <div class="modal-description">
+          <h4>Description</h4>
+          <p id="modalDesc">Detailed description goes here...</p>
+        </div>
+
+        <div id="pickupInfoSection" style="display:none;">
+          <h4>Pick-up Location</h4>
+          <div class="pickup-preview-box">
+             <div class="p-box">
+               <div class="p-placeholder"></div>
+               <small>Building</small>
+             </div>
+             <div class="p-box">
+               <div class="p-placeholder"></div>
+               <small>Room</small>
+             </div>
+          </div>
+        </div>
+
+        <button class="btn-claim" id="claimBtn" onclick="openClaimForm()">Request Claim</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup-overlay" id="claimFormPopup">
+  <div class="popup-box claim-popup">
+    <h3>Claim Verification Process</h3>
+    <p>Provide detailed identifiable proof that you are the rightful owner.</p>
+    
+    <div class="form-group">
+      <textarea class="form-textarea" placeholder="Describe specific details only the owner would know (e.g., wallpaper, contents)..." id="claimEvidence"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Upload Proof (Receipt/Photo)</label>
+      <input type="file" class="form-input">
+    </div>
+
+    <div class="popup-actions">
+      <button class="btn-cancel" onclick="closeClaimForm()">Cancel</button>
+      <button class="btn-submit-evidence" onclick="submitClaim()">Submit Evidence</button>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript (loaded last) -->
+<script src="script.js"></script>
+
+</body>
+</html>

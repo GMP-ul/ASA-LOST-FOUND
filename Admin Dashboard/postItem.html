@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Item - ASA Lost and Found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="homepage.css">
+  <link rel="stylesheet" href="postItem.css">
+</head>
+<body>
+
+<header class="home-header">
+  <div class="logo-container">
+    <a href="homepage.html" class="logo-link">
+      <img src="Final logo.png" alt="ASA Logo" class="main-logo">
+    </a>
+  </div>
+  
+  <nav class="main-nav">
+    <a href="homepage.html" class="nav-item"><i class="fa-solid fa-table-cells-large"></i> Home</a>
+    <a href="#" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i> Lost Items</a>
+    <a href="#" class="nav-item"><i class="fa-solid fa-circle-check"></i> Found Items</a>
+    <a href="post-item.html" class="nav-item active"><i class="fa-solid fa-circle-plus"></i> Post Item</a>
+  </nav>
+
+  <div class="header-right">
+    <div class="notif-container">
+      <div class="bell-wrapper" onclick="toggleNotif()">
+        <i class="fa-regular fa-bell bell"></i>
+        <span class="notif-badge"></span>
+      </div>
+      <div id="notifDropdown" class="notif-dropdown">
+        <!-- (Same dropdown content as homepage) -->
+      </div>
+    </div>
+
+    <div class="profile-dropdown">
+      <div class="user-avatar" onclick="toggleDropdown()">
+        <i class="fa-solid fa-circle-user"></i>
+      </div>
+      <div id="myDropdown" class="dropdown-content">
+        <!-- (Same dropdown content as homepage) -->
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="post-selection-container">
+  <!-- Reference Image Card Implementation -->
+  <div class="selection-card">
+    <h1>Post Item</h1>
+    <p>Lost something important or found an item that doesn't belong to you? Start by selecting whether the item is lost or found. Once selected, you'll be guided to provide the necessary details to help others identify the item and increase the chances of returning it to its rightful owner.</p>
+    
+    <div class="selection-buttons">
+      <a href="report-lost.html" class="btn-post btn-lost">Lost Item</a>
+      <a href="foundItemLoc.html" class="btn-post btn-found">Found Item</a>
+    </div>
+  </div>
+</main>
+
+<footer class="bottom-bar"></footer>
+
+<script>
+// (Keep your toggleDropdown and toggleNotif functions here for consistency)
+</script>
+</body>
+</html>

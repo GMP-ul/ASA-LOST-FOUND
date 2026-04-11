@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage - ASA Lost and Found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+
+<header class="home-header">
+  <div class="logo-container">
+    <a href="homepage.html" class="logo-link">
+      <img src="Final logo.png" alt="ASA Logo" class="main-logo">
+    </a>
+  </div>
+  
+  <nav class="main-nav">
+    <a href="homepage.html" class="nav-item"><i class="fa-solid fa-table-cells-large"></i> Home</a>
+    <a href="#" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i> Lost Items</a>
+    <a href="#" class="nav-item"><i class="fa-solid fa-circle-check"></i> Found Items</a>
+    <a href="postItem.html" class="nav-item"><i class="fa-solid fa-circle-plus"></i> Post Item</a>
+  </nav>
+
+  <div class="header-right">
+    <!-- Notification Dropdown -->
+    <div class="notif-container">
+      <div class="bell-wrapper" onclick="toggleNotif()">
+        <i class="fa-regular fa-bell bell"></i>
+        <span class="notif-badge"></span>
+      </div>
+      
+      <div id="notifDropdown" class="notif-dropdown">
+        <div class="notif-header">
+          <h3>Notifications</h3>
+          <a href="#" class="mark-read">Mark all as read</a>
+        </div>
+        
+        <div class="notif-list">
+          <div class="notif-item unread">
+            <div class="notif-icon-box glass-bg"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="notif-text">
+              <p><strong>Potential match found!</strong> Your lost Blue Wallet may match a found item.</p>
+              <span class="notif-time">2 minutes ago</span>
+            </div>
+            <div class="status-dot"></div>
+          </div>
+
+          <div class="notif-item unread">
+            <div class="notif-icon-box box-bg"><i class="fa-solid fa-box-archive"></i></div>
+            <div class="notif-text">
+              <p>A <strong>new found item</strong> was reported near Library that matches your description.</p>
+              <span class="notif-time">1 hour ago</span>
+            </div>
+            <div class="status-dot"></div>
+          </div>
+
+          <div class="notif-item unread">
+            <div class="notif-icon-box check-bg"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="notif-text">
+              <p>Your report <strong>"Black Umbrella"</strong> has been verified by an admin.</p>
+              <span class="notif-time">3 hours ago</span>
+            </div>
+            <div class="status-dot"></div>
+          </div>
+
+          <div class="notif-item">
+            <div class="notif-icon-box welcome-bg"><i class="fa-solid fa-clipboard-list"></i></div>
+            <div class="notif-text">
+              <p>Welcome to <strong>ASA Lost & Found!</strong> Start by posting a lost or found item.</p>
+              <span class="notif-time">Yesterday</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="notif-footer">
+          <a href="#">See all notifications</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Dropdown -->
+    <div class="profile-dropdown">
+      <div class="user-avatar" onclick="toggleDropdown()">
+        <i class="fa-solid fa-circle-user"></i>
+      </div>
+      <div id="myDropdown" class="dropdown-content">
+        <div class="user-info">
+            <p class="u-name">CCIS Admin</p>
+            <p class="u-role">Admin</p>
+        </div>
+        <hr>
+        <a href="accInfo.html"><i class="fa-solid fa-gear"></i> Settings</a>
+        <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+        <a href="/Landing Page Plaza/index.html" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="home-container">
+  <section class="welcome-banner">
+    <div class="welcome-text">
+        <h1>Welcome back, <span>CCIS Admin 👋</span></h1>
+        <p>Here's what's happening with your reported items.</p>
+    </div>
+    <div class="action-btns">
+        <button class="report-lost"><i class="fa-solid fa-circle-plus"></i> Report Lost</button>
+        <button class="report-found"><i class="fa-solid fa-magnifying-glass"></i> Report Found</button>
+    </div>
+  </section>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+        <div class="icon-box yellow-bg"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="stat-info">
+            <h3>Lost Items</h3>
+            <p>// Number of Lost Items</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="icon-box blue-bg"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="stat-info">
+            <h3>Found Items</h3>
+            <p>// Number of Found Items</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="icon-box green-bg"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="stat-info">
+            <h3>Recovered</h3>
+            <p>// Number of Recovered Items</p>
+        </div>
+    </div>
+  </div>
+
+  <section class="recent-section">
+    <div class="section-header">
+        <h2>Recently Updated</h2>
+        <a href="#" class="explore-link">Explore All <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="empty-state">
+        <div class="tag-icon"><i class="fa-solid fa-tags"></i></div>
+        <h3>No Recent Updates</h3>
+        <p>Looks like everyone is holding onto their belongings right now. Be a hero and report an item if you find one!</p>
+    </div>
+  </section>
+
+  <div class="tip-banner">
+    <div class="tip-content">
+        <h3>How to recover items faster?</h3>
+        <p>Adding clear photos and specific locations significantly increases the chance of finding your item. Our automated matching system will notify you as soon as a potential match is found.</p>
+        <div class="tip-labels">
+            <span><i class="fa-regular fa-clock"></i> Update Daily</span>
+            <span><i class="fa-solid fa-check-double"></i> Verify Ownership</span>
+        </div>
+    </div>
+    <i class="fa-solid fa-magnifying-glass big-glass"></i>
+  </div>
+</main>
+
+<footer class="bottom-bar"></footer>
+
+<script>
+function toggleDropdown() {
+  document.getElementById("myDropdown").classList.toggle("show");
+  document.getElementById("notifDropdown").classList.remove("show");
+}
+
+function toggleNotif() {
+  document.getElementById("notifDropdown").classList.toggle("show");
+  document.getElementById("myDropdown").classList.remove("show");
+}
+
+window.onclick = function(event) {
+  if (!event.target.closest('.profile-dropdown') && !event.target.closest('.notif-container')) {
+    document.getElementById("myDropdown").classList.remove("show");
+    document.getElementById("notifDropdown").classList.remove("show");
+  }
+}
+</script>
+</body>
+</html>

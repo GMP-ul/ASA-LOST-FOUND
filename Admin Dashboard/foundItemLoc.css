@@ -1,0 +1,173 @@
+/* MAIN LAYOUT */
+.form-container {
+    padding: 40px 80px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.form-header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #333;
+}
+
+.back-btn {
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+}
+
+/* THE REPORT CARD */
+.report-card {
+    background: #ffffff;
+    border: 2px solid #3498db;
+    border-radius: 12px;
+    padding: 45px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.row {
+    display: flex;
+    gap: 25px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.half { width: 50%; }
+.full { width: 100%; }
+
+.input-group label {
+    font-weight: 700;
+    font-size: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group label i {
+    color: #1B5E20;
+    font-size: 18px;
+}
+
+/* NEW: LOCATION PREVIEW BOX STYLE */
+.location-preview-box {
+    background-color: #f8f9fa;
+    border: 1px dashed #3498db;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    gap: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.preview-images {
+    display: flex;
+    gap: 10px;
+}
+
+.img-placeholder {
+    width: 100px;
+    height: 80px;
+    background-color: #e9ecef;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    color: #999;
+    border: 1px solid #ddd;
+}
+
+.preview-details {
+    flex-grow: 1;
+}
+
+.preview-details h4 {
+    margin: 0 0 10px 0;
+    color: #1B5E20;
+    font-weight: 800;
+}
+
+.preview-details textarea {
+    width: 100%;
+    height: 60px;
+    font-size: 12px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.edit-loc-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* INPUTS, SELECTS, TEXTAREA */
+input, select, textarea {
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+    background-color: #fff;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #3498db;
+}
+
+/* SUBMIT BUTTON */
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.submit-btn {
+    background-color: #1B5E20;
+    color: white;
+    border: none;
+    padding: 16px 90px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .row { flex-direction: column; }
+    .half { width: 100%; }
+    .form-container { padding: 20px; }
+    .location-preview-box { flex-direction: column; }
+}

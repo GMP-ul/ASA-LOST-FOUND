@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity Logs - ASA Lost and Found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="accLogs.css">
+</head>
+<body>
+
+<header>
+  <a href="homepage.html" class="logo-link">
+    <img src="Final logo.png" alt="ASA Lost and Found Logo" class="main-logo">
+  </a>
+
+  <nav class="header-nav">
+    <a href="homepage.html" class="nav-item">
+      <i class="fa-solid fa-table-cells-large"></i> Home
+    </a>
+    <a href="accLost.html" class="nav-item">
+      <i class="fa-solid fa-magnifying-glass"></i> Lost Items
+    </a>
+    <a href="accFound.html" class="nav-item">
+      <i class="fa-solid fa-magnifying-glass"></i> Found Items
+    </a>
+    <a href="#" class="nav-item">
+      <i class="fa-solid fa-circle-plus"></i> Post Item
+    </a>
+  </nav>
+
+  <div class="header-right">
+    <i class="fa-regular fa-bell bell"></i>
+    <div class="user-avatar">
+      <i class="fa-solid fa-circle-user"></i>
+    </div>
+  </div>
+</header>
+
+<div class="main-container">
+  <aside class="sidebar">
+    <div class="sidebar-content">
+      <h2 class="sidebar-category">Options</h2>
+      <nav class="menu">
+        <a href="dashboard.html" class="menu-item">Dashboard</a>
+        <a href="accLost.html" class="menu-item">Lost Items</a>
+        <a href="accFound.html" class="menu-item">Found Items</a>
+        <a href="accClaim.html" class="menu-item">Pending Items</a>
+        <a href="accClaimed.html" class="menu-item">Claimed items</a>
+        <a href="accApproved.html" class="menu-item">Approved Items</a>
+        <a href="accsUsers.html" class="menu-item">Users</a>
+        <a href="accUpdates.html" class="menu-item">Recently Updated</a>
+        <a href="accLogs.html" class="menu-item active">Reports / Logs</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="accInfo.html" class="menu-item">Settings</a>
+      <a href="login.html" class="logout">Log Out</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="content-header">
+      <h1 class="page-title">Activity Logs</h1>
+    </div>
+
+    <section class="dashboard-section">
+      <div class="table-card logs-container">
+        <table class="dashboard-table">
+          <thead>
+            <tr>
+              <th>Log ID</th>
+              <th>User</th>
+              <th>Action</th>
+              <th>Item</th>
+              <th>Date Submitted</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>001</td>
+              <td>Elia E.</td>
+              <td>Submitted Lost Item</td>
+              <td>Wallet</td>
+              <td>21/03/26 10:45 AM</td>
+            </tr>
+            <tr class="gray-row">
+              <td>002</td>
+              <td>Genrey P.</td>
+              <td>Claim Lost Item</td>
+              <td>Payong</td>
+              <td>21/03/26 10:45 AM</td>
+            </tr>
+            <tr>
+              <td>003</td>
+              <td>Rexil D.</td>
+              <td>Submitted Found Item</td>
+              <td>Ballpen</td>
+              <td>21/03/26 10:45 AM</td>
+            </tr>
+            <tr class="gray-row">
+              <td>004</td>
+              <td>Angela C.</td>
+              <td>Claim Lost Item</td>
+              <td>ID Card</td>
+              <td>21/03/26 10:45 AM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="pagination">
+      <a href="#" class="page-nav"><i class="fa-solid fa-arrow-left"></i> Prev</a>
+      <a href="#" class="page-num active">1</a>
+      <a href="#" class="page-num">2</a>
+      <a href="#" class="page-num">3</a>
+      <span class="page-dots">...</span>
+      <a href="#" class="page-num">67</a>
+      <a href="#" class="page-num">68</a>
+      <a href="#" class="page-nav">Next <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

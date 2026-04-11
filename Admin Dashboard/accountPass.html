@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password & Security</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="accountPass.css">
+</head>
+<body>
+
+<header>
+  <a href="homepage.html" class="logo-link">
+    <img src="Final logo.png" alt="ASA Lost and Found Logo" class="main-logo">
+  </a>
+
+  <nav class="header-nav">
+    <a href="homepage.html" class="nav-item"><i class="fa-solid fa-table-cells-large"></i> Home</a>
+    <a href="#" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i> Lost Items</a>
+    <a href="#" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i> Found Items</a>
+    <a href="#" class="nav-item"><i class="fa-solid fa-circle-plus"></i> Post Item</a>
+  </nav>
+
+  <div class="header-right">
+    <i class="fa-regular fa-bell bell"></i>
+    <div class="user-avatar"><i class="fa-solid fa-circle-user"></i></div>
+  </div>
+</header>
+
+<div class="main-container">
+  <aside class="sidebar">
+    <h2 class="sidebar-category">Settings</h2>
+    <nav class="menu">
+      <a href="accInfo.html" class="menu-item">Account Information</a>
+      <a href="accountPass.html" class="menu-item active">Password & Security</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="/Landing Page Plaza/index.html" class="menu-item">Dashboard</a>
+      <div class="logout">Log Out</div>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="content-header">
+      <h1 class="page-title">PASSWORD & SECURITY</h1>
+    </div>
+
+    <div class="account-card">
+      <form class="form-grid">
+        <div class="form-group full">
+          <label>Current Password</label>
+          <div class="input-wrapper">
+            <input type="password" placeholder="••••••••" readonly class="readonly-input">
+            <i class="fa-solid fa-lock status-icon"></i>
+            <a href="#" class="edit-link">Edit</a>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>New Password</label>
+          <div class="input-wrapper">
+            <input type="password" placeholder="Enter New Password">
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>Confirm Password</label>
+          <div class="input-wrapper">
+            <input type="password" placeholder="Confirm New Password">
+            <i class="fa-solid fa-check status-icon check-success"></i>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label>Role</label>
+          <div class="input-wrapper">
+            <input type="text" value="Administrator" readonly class="readonly-input">
+            <i class="fa-solid fa-lock status-icon"></i>
+          </div>
+        </div>
+        <div class="form-group full">
+          <button type="button" class="yellow-btn full-btn">Update Information</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
