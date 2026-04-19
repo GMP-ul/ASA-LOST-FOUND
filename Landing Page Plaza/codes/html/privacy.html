@@ -36,24 +36,24 @@
     </nav>
 
     <script>
-    let lastScroll = 0;
-    const navbar = document.querySelector("nav");
+        let lastScroll = 0;
+        const navbar = document.querySelector("nav");
 
-    window.addEventListener("scroll", () => {
-        let currentScroll = window.pageYOffset;
+        window.addEventListener("scroll", () => {
+            let currentScroll = window.pageYOffset;
 
-        // Simplified: Keep it fixed, just slide it up or down
-        if (currentScroll > lastScroll && currentScroll > 60) {
-            // Scrolling down - hide navbar
-            navbar.style.top = "-60px";
-        } else {
-            // Scrolling up - show navbar
-            navbar.style.top = "0";
-        }
+            // Simplified: Keep it fixed, just slide it up or down
+            if (currentScroll > lastScroll && currentScroll > 60) {
+                // Scrolling down - hide navbar
+                navbar.style.top = "-60px";
+            } else {
+                // Scrolling up - show navbar
+                navbar.style.top = "0";
+            }
 
-        lastScroll = currentScroll;
-    });
-</script>
+            lastScroll = currentScroll;
+        });
+    </script>
 
     <main class="container">
         <div class="policy-header">
