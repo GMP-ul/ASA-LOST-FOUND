@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/info.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="sidebar-active">
+
+        <img src="../../ASA_logo/final logo 1.png" alt="" class="logo-side">
+
+        <label for="sidebar-active" class="open-sidebar-button">
+            <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e3e3e3"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+        </label>
+
+        <label id="overlay" for="sidebar-active"></label>
+
+        <div class="link-container">
+            <label for="sidebar-active" class="close-sidebar-button">
+                <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </label>
+                <img src="../../ASA_logo/final logo 1.png" alt="" class="logo">
+                <a href="../../../index.html" class="text">Home</a>
+                <a href="" class="text">Contact</a>
+                <a href="" class="text">About</a>
+                <a href="../../../Signup/landing.html" class="log-in-link">
+                    <button class="log-in">
+                        Log-in
+                    </button>
+                </a>
+        </div>
+    </nav>
+
+    <script>
+        let lastScroll = 0;
+        const navbar = document.querySelector("nav");
+
+        window.addEventListener("scroll", () => {
+            let currentScroll = window.pageYOffset;
+
+            // Simplified: Keep it fixed, just slide it up or down
+            if (currentScroll > lastScroll && currentScroll > 60) {
+                // Scrolling down - hide navbar
+                navbar.style.top = "-60px";
+            } else {
+                // Scrolling up - show navbar
+                navbar.style.top = "0";
+            }
+
+            lastScroll = currentScroll;
+        });
+    </script>
+
+    <main class="container">
+        <div class="Item-1" style="grid-area: box-1;">
+            <a class="menu" href="">Privacy And Policy</a>
+            <a class="menu" href="">Terms of Services</a>
+            <a class="menu" href="">Documentation</a>
+            <a class="menu" href="">Help Center</a>
+            <a class="menu" href="">Community</a>
+
+        </div>
+        <div class="Item-2" style="grid-area: box-2;">
+            <h1 class="main-title">Privacy Policy & Community Safety</h1>
+            <p class="last-updated">Last Updated: April 6, 2026</p>
+        </div>
+        <div class="Item-3" style="grid-area: box-3;"></div>
+    </main>
+</body>
+</html>
